@@ -37,3 +37,20 @@
 -----
 
 <!-- LLM APPENDS BELOW THIS LINE -->
+
+## Phase 0 — Foundations — 2026-03-16
+
+### Built
+
+- Added `docker-compose.yml` and `docker-compose.dev.yml` for core local services.
+- Added `infra/postgres/init.sql` to enable `vector`, `uuid-ossp`, and `pg_trgm`.
+- Added backend skeleton (`backend/main.py`, package init, Dockerfile) with health endpoint.
+- Added frontend React/Vite scaffold and Dockerfile.
+- Added root project scaffolding: `.env.example`, `pyproject.toml`, `Makefile`, `.gitignore`.
+- Added initial backend test (`backend/tests/test_health.py`) and plugin validation script.
+
+### Validation
+
+- `python -m pytest backend/tests/test_health.py -q` passed.
+- `npm run build` in `frontend/` passed.
+- Manual health check against `GET /v1/health` returned expected phase-0 response.

@@ -10,16 +10,16 @@
 ```yaml
 ---
 alchemyos_version: 0.1.0
-build_phase: 0
-phases_complete: []
+build_phase: 1
+phases_complete: [0]
 phases_total: 11
 modules_built: []
 modules_total: 14
 known_issues: []
-last_updated_by: human
-last_updated_at: 2025-01-01T00:00:00Z
-llm_build_status: not_started
-environment_validated: false
+last_updated_by: copilot
+last_updated_at: 2026-03-16T20:50:27Z
+llm_build_status: phase_0_complete
+environment_validated: true
 ---
 ```
 
@@ -282,7 +282,12 @@ make plugin-check     # validate all plugins in /plugins dir
 
 > This section is maintained by the LLM build agent. Each completed phase appends an entry.
 
-*(No phases complete yet — build not started)*
+## Phase 0 — Foundations — 2026-03-16
+
+- Added Docker Compose scaffolding for Postgres (pgvector), Redis, backend, and frontend services.
+- Added backend FastAPI skeleton with `/v1/health` endpoint.
+- Added frontend React + TypeScript + Vite scaffold with a running starter UI.
+- Added root `.env.example`, `pyproject.toml`, and `Makefile` for setup/run/test/lint flows.
 
 -----
 
