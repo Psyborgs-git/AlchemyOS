@@ -1,8 +1,8 @@
 # AlchemyOS — Master LLM Build Prompt
 
 > **This file is the complete instruction set for an LLM to build AlchemyOS from scratch.**
-> Feed this file plus README.md and ARCHITECTURE.md to the LLM before starting any phase.
-> The LLM must read all three files before writing a single line of code.
+> Feed this file plus README.md, ARCHITECTURE.md, and INIT_PROMPT.md to the LLM before starting any phase.
+> The LLM must read all four files before writing a single line of code.
 
 -----
 

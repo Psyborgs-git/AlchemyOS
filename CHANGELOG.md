@@ -14,7 +14,7 @@
 
 - README.md: Living project documentation with frontmatter protocol
 - ARCHITECTURE.md: Machine-parseable hexagonal architecture specification
-- PROMPT.md: Master LLM build prompt with phase-by-phase deliverables
+- BUILD_PROMPT.md: Master LLM build prompt with phase-by-phase deliverables
 - INIT_PROMPT.md: First-boot initialisation prompt for LLM workflow
 
 ### Decisions Made
