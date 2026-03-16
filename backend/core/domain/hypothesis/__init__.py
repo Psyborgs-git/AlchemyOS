@@ -1,0 +1,1 @@
+"""Hypothesis domain entities."""
