@@ -76,6 +76,7 @@ It is not a wrapper around existing tools. It is an **operating system for chemi
 
 - Docker + Docker Compose v2+
 - Python 3.11+
+- [uv](https://docs.astral.sh/uv/) (for Python dependency management in `make setup`)
 - Node.js 20+
 - 16GB RAM minimum (CPU), 24GB VRAM recommended for GPU paths
 - [Ollama](https://ollama.ai) installed and running (or vLLM / LM Studio)
