@@ -12,7 +12,7 @@
 alchemyos_version: 0.1.0
 build_phase: 0
 phases_complete: []
-phases_total: 10
+phases_total: 11
 modules_built: []
 modules_total: 14
 known_issues: []
