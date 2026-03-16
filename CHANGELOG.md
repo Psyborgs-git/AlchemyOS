@@ -54,3 +54,70 @@
 - `python -m pytest backend/tests/test_health.py -q` passed.
 - `npm run build` in `frontend/` passed.
 - Manual health check against `GET /v1/health` returned expected phase-0 response.
+
+-----
+
+## Phase 1 — Core Domain — 2026-03-16
+
+### Built
+
+**Domain Layer (Pure Python, Zero Infrastructure Dependencies):**
+- All domain entities in `backend/core/domain/`:
+  - Chemistry: `Molecule`, `Reaction`, `MolecularProperty`, `Scaffold`
+  - Simulation: `Simulation`, `Trajectory`
+  - Hypothesis: `Hypothesis`, `Experiment`, `Evidence`
+  - Training: `TrainingJob`, `ModelCheckpoint`, `TrainingDataset`
+  - Generation: `GeneratedMolecule`, `DesignSpec`
+  - Knowledge: `Paper`, `KnowledgeNode`, `ChunkEmbedding`
+
+**Port Interfaces (Protocols):**
+- Outbound ports in `backend/core/ports/outbound/`:
+  - `ILLMPort` - LLM interactions
+  - `IChemPort` - Chemistry operations
+  - `IDBPort` - Database operations
+  - `IVectorPort` - Vector database operations
+  - `IGraphPort` - Graph database operations
+- Inbound ports in `backend/core/ports/inbound/`:
+  - `IRunCopilot` - Copilot interaction interface
+
+**Use Cases:**
+- `RunCopilotUseCase` in `backend/core/usecases/` with LLM port injection
+
+**LLM Adapters:**
+- `BaseLLMAdapter` with OpenAI-compatible interface
+- `OllamaAdapter` for Ollama local LLM runtime
+- `VLLMAdapter` for vLLM inference engine
+- `OpenAIShimAdapter` for any OpenAI-compatible API
+
+**Plugin System:**
+- `AlchemyPlugin` protocol in `backend/plugins/plugin_base.py`
+- `PluginRegistry` with dynamic loading/unloading
+- `PluginWatcher` with watchdog for hot-reload
+- Integrated into FastAPI lifespan for automatic plugin discovery
+
+**Configuration & DI:**
+- `backend/config.py` with Pydantic Settings reading all env vars
+- `backend/dependencies.py` for dependency injection wiring
+- LLM adapter factory with provider switching
+
+**API Endpoints:**
+- `/v1/copilot/chat` - SSE streaming copilot endpoint
+- `/v1/health` - Enhanced with plugin status
+
+**Tests:**
+- Unit tests for domain entities (`test_entities.py`)
+- Unit tests for LLM adapters (`test_llm_adapters.py`)
+- Unit tests for plugin registry (`test_plugin_registry.py`)
+- Integration test for copilot endpoint (`test_copilot_endpoint.py`)
+- Updated health endpoint test
+
+### Architecture Validation
+
+✅ **Domain Purity:** Zero infrastructure imports in `backend/core/`
+✅ **Port/Adapter Pattern:** All dependencies injected via Protocol interfaces
+✅ **Plugin Contract:** Hot-reload working, protocol validated
+✅ **Tests:** All components have unit tests
+
+### Known Issues
+
+None.
