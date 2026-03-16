@@ -1,8 +1,8 @@
 # AlchemyOS — Master LLM Build Prompt
 
 > **This file is the complete instruction set for an LLM to build AlchemyOS from scratch.**
-> Feed this file plus README.md and ARCHITECTURE.md to the LLM before starting any phase.
-> The LLM must read all three files before writing a single line of code.
+> Feed this file, README.md, ARCHITECTURE.md, and INIT_PROMPT.md to the LLM before starting any phase.
+> The LLM must read all four files in this order before writing a single line of code: README.md → ARCHITECTURE.md → BUILD_PROMPT.md → INIT_PROMPT.md.
 
 -----
 
@@ -33,6 +33,8 @@ Before writing any code, you MUST:
 
 1. Read `README.md` completely — note `build_phase`, `phases_complete`, `modules_built`, `known_issues`
 1. Read `ARCHITECTURE.md` completely — internalize the directory structure, all port interfaces, entity schemas, and the build phase checklist
+1. Read `BUILD_PROMPT.md` completely — internalize phase requirements, architecture rules, and completion protocol
+1. Read `INIT_PROMPT.md` completely — execute its initialization sequence before phase work
 1. Identify the **current phase** from `build_phase` in README.md frontmatter
 1. State out loud: “I am building Phase N: [Name]. Prerequisite phases complete: [list]. I will now build: [list of files].”
 1. Check `known_issues` — if any issues exist from previous phases, address them BEFORE proceeding
