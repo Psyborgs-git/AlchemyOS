@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from watchdog.observers import Observer
 
 from backend.adapters.inbound.api.v1.router import router as v1_router
+from backend.modules.safety.middleware import SafetyMiddleware
 from backend.plugins.registry import plugin_registry
 from backend.plugins.watcher import PluginWatcher
 
@@ -55,6 +56,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Add safety screening middleware
+app.add_middleware(SafetyMiddleware)
+
 # Include v1 API routes
 app.include_router(v1_router)
 
@@ -65,6 +69,11 @@ async def health() -> dict[str, str | int | list]:
     return {
         "status": "ok",
         "version": "0.1.0",
-        "phase": 1,
+        "phase": 2,
         "plugins": plugin_registry.list_plugins(),
+        "modules": {
+            "chemistry_engine": "active",
+            "safety": "active",
+            "smiles_nl": "active",
+        },
     }
