@@ -749,8 +749,8 @@ Hardware profile is set in `.env` as `HARDWARE_PROFILE=cpu|gpu|multi-gpu`. Adapt
 
 |Phase|Name                  |Status|Completed At|
 |-----|----------------------|------|------------|
-|0    |Foundations           |⬜     |—           |
-|1    |Core Domain           |⬜     |—           |
+|0    |Foundations           |✅     |2026-03-16  |
+|1    |Core Domain           |✅     |2026-03-16  |
 |2    |Chemistry Engine      |⬜     |—           |
 |3    |Simulation            |⬜     |—           |
 |4    |Retrosynthesis        |⬜     |—           |
